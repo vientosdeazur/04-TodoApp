@@ -30,7 +30,7 @@ const main = async() => {
                 // Mostrar la lista de tareas de la base de datos
     
         
-    }}  while (option !== 3);
+    }}  while (option !== 0);
 
          
 }

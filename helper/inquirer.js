@@ -8,17 +8,18 @@ const menu = [
         message:'What do you want to do?',
         choices: [
             {
+                value: 0,
+                name: `${'0-'.blue} Salir`
+            },
+            {
                 value: 1,
                 name: `${'1-'.blue} Create Task`
             },
             {
                 value: 2,
                 name: `${'2-'.blue} Get Tasks`
-            },
-            {
-                value: 3,
-                name: `${'3-'.blue} Salir`
             }
+          
         ]
     }
 ];
