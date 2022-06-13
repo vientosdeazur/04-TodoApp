@@ -1,10 +1,11 @@
-const { inquirerMenu , inquirerInput} = require ('./helper/inquirer');
+const { inquirerMenu , inquirerInput, inquirerTaskMenu, inquirerCompleteTaskMenu} = require ('./helper/inquirer');
 const TaskRepository = require('./repositories/TaskRepository');
 
 const main = async() => {
     
     const taskRepository = new TaskRepository();
     let option ='';
+
 
     do {
     
@@ -28,8 +29,17 @@ const main = async() => {
                 console.log (allTask);
                 break;
                 // Mostrar la lista de tareas de la base de datos
-    
-        
+            case 3:
+
+                
+                const index = await inquirerTaskMenu();
+                taskRepository.deleteTask(index);
+
+            case 4:     
+          
+                const index2 = await inquirerCompleteTaskMenu();
+                taskRepository.completeTask(index2);
+
     }}  while (option !== 0);
 
          

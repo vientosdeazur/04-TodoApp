@@ -1,4 +1,5 @@
 const inquirer = require ('inquirer');
+const { getData } = require('./fileManager');
 require ('colors');
 
 const menu = [
@@ -18,11 +19,43 @@ const menu = [
             {
                 value: 2,
                 name: `${'2-'.blue} Get Tasks`
+            },
+            {
+                value: 3,
+                name: `${'3-'.blue} Erase Task`
+            },
+            {
+                value: 4,
+                name: `${'4-'.blue} Complete Task`
             }
           
         ]
     }
 ];
+
+const inquirerTaskMenu = async () => {
+    
+    const data = getData();
+    const titles = data.map ((datos, i) => ({
+        value: i,
+        name: `${i + '-'.blue + datos.title}`
+        }));
+
+
+    const taskMenu = 
+        {            
+            type: 'list',
+            name: 'option',
+            message: 'What Task you desire to erase?',
+            choices: titles 
+            }        
+
+        
+
+    const {option} = await inquirer.prompt(taskMenu);
+    return option;
+} 
+
 
 const inquirerMenu = async() => {
     console.log ('============================'.blue);
@@ -48,7 +81,34 @@ const inquirerInput = async( message ) => {
     return description;
 }
 
+
+const inquirerCompleteTaskMenu = async () => {
+    
+    const data = getData();
+    const titles = data.map ((datos, i) => ({
+        value: i,
+        name: `${i + '-'.blue + datos.title}`
+        }));
+
+
+    const taskCompleteMenu = 
+        {            
+            type: 'list',
+            name: 'option',
+            message: 'What Task is complete?',
+            choices: titles 
+            }        
+
+        
+
+    const {option} = await inquirer.prompt(taskCompleteMenu);
+    return option;
+} 
+
+
 module.exports = {
     inquirerMenu,
-    inquirerInput
+    inquirerInput,
+    inquirerTaskMenu,
+    inquirerCompleteTaskMenu   
 }

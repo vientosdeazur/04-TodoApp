@@ -1,5 +1,5 @@
 const Task = require ('../models/Task');
-const {getData, saveData} = require ('../helper/fileManager')
+const {getData, saveData, eraseData,editData} = require ('../helper/fileManager')
 
 class TaskRepository {
 
@@ -19,24 +19,21 @@ class TaskRepository {
         return this._tasks;
     }
 
-
-    /*
-        Falta persistir datos en archivo
-    */
-
     createTask(title){
         const task = new Task(title);
         this._tasks.push(task);
         saveData(this._tasks);
     }
 
-    deleteTask(){
+    deleteTask(i){
+        eraseData(i);
+        console.log ( "Tarea Eliminada con exito");
 
     }
 
-    completeTask(){
-
-
+    completeTask(i){
+        editData(i);
+        console.log ("La tarea se encuentra Completada");
     }
 
 
