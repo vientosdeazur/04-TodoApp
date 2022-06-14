@@ -31,14 +31,15 @@ const main = async() => {
                 // Mostrar la lista de tareas de la base de datos
             case 3:
 
-                
                 const index = await inquirerTaskMenu();
                 taskRepository.deleteTask(index);
+                break;
 
             case 4:     
           
                 const index2 = await inquirerCompleteTaskMenu();
                 taskRepository.completeTask(index2);
+                break;
 
     }}  while (option !== 0);
 

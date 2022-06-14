@@ -19,9 +19,9 @@ const getData = () => {
 }
 
 const eraseData = (i) => {
-    data = getData();
+    let data = getData();
     if (data){
-        data = data.splice (i-1,1);   
+        data.splice(i,1);
         saveData(data);
     } else {
         console.log ("No data Available");
@@ -29,15 +29,11 @@ const eraseData = (i) => {
 }
 
 const editData = (i) => {
-    data = getData();
-    data = data.map ((done , index)=>{
-       if (data[index] == data[i]){
-        data[index].isDone = true;
-       } 
-       return data;
-    }  
-    )
-    saveData(data);
+    let data = getData();
+    if(data){
+        data[i].isDone = true; 
+        saveData(data);
+    }    
 }
 
 
